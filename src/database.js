@@ -1,9 +1,11 @@
 const mongoose = require('mongoose');
+const dotenv = require('dotenv')
+dotenv.config();
 // const { MongoClient, ServerApiVersion } = require('mongodb');
 // const url = "mongodb+srv://revanthpatnani:Vwh1JHBmcpYLvfRb@cluster0.0eselbe.mongodb.net/Employees?retryWrites=true&w=majority";
 
 const connect = () => {
-const url = "mongodb+srv://revanthpatnani:INW7nBHsMgA5UjDV@cluster0.0eselbe.mongodb.net/Employees?retryWrites=true&w=majority&appName=Cluster0";
+const url = process.env.MONGODB_URL;
 
 mongoose.connect(url)
     .then(() => {
