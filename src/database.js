@@ -7,7 +7,12 @@ dotenv.config();
 const connect = () => {
 const url = process.env.MONGODB_URL;
 
-mongoose.connect(url)
+mongoose.connect(url, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    bufferCommands: false,
+    serverSelectionTimeoutMS: 30000 
+})
     .then(() => {
         console.info("Connected to the DB")
     })
