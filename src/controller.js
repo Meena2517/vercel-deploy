@@ -55,7 +55,7 @@ const Desks = require('./model')
 
   exports.getData = async (req, res) => {
     try {
-      const data = await Desks.find().exec(); // Use exec() to execute the query and return a promise
+      const data = await Desks.find(); // Use exec() to execute the query and return a promise
       res.status(200).json(data);
     } catch (error) {
       console.error('Error fetching data:', error);
