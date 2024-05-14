@@ -4,7 +4,7 @@ const fs = require('fs');
 
 module.exports.generatePDFFromHTML = async (html) => {
     try {
-        const browser = await puppeteer.launch({ headless: false, args: ['--no-sandbox', '--disable-setuid-sandbox'] });
+        const browser = await puppeteer.launch({ headless: false, executablePath: '/path/to/chrome-or-firefox-or-webkit-executable', args: ['--no-sandbox', '--disable-setuid-sandbox'] });
         const page = await browser.newPage();
         await page.setContent(html);
         const pdfBuffer = await page.pdf({
