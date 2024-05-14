@@ -42,7 +42,7 @@ router.post('/sendFeedback', Deskcontroller1.sendFeedbackMail);
 
 
 
-router.get('/generatePDF', generatePDF.generatePDF);
+router.post('/generatePDF', upload.single('photo'), generatePDF.generatePDF);
 router.post('/postResumeData', upload.single('photo'), generatePDF.addDesk);
 router.get('/getResumeData', generatePDF.getResumeData);
 router.put('/updateResumeData/:id',upload.single('photo'), generatePDF.updateResumeData);

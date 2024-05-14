@@ -26,9 +26,9 @@ module.exports.generatePDFFromHTML = async (html) => {
 
 module.exports.generatePDF = async (req, res) => {
     try {
-        const reqBody = req.query;
-        const data = await Desk.find({ _id : reqBody.id });
-        const reqData = data[0];
+        const reqData = req.body;
+        // const data = await Desk.find({ _id : reqBody.id });
+        // const reqData = data[0];
         const skills = JSON.parse(reqData.skills);
         const experience = JSON.parse(reqData.experience);
         const tableData = JSON.parse(reqData.tableData);
