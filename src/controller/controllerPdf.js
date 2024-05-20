@@ -1,10 +1,15 @@
 var Desk = require('../model/modelResume')
 const puppeteer = require('puppeteer');
 const fs = require('fs');
+const chromium = require('chrome-aws-lambda');
 
 module.exports.generatePDFFromHTML = async (html) => {
     try {
-        const browser = await puppeteer.launch({ headless: true, executablePath: 'puppeteer\\chrome-win32\\chrome.exe'});
+        const browser = await puppeteer.launch({  args: chromium.args,
+            defaultViewport: chromium.defaultViewport,
+            executablePath: await chromium.executablePath,
+            headless: chromium.headless,
+            ignoreHTTPSErrors: true });
         const page = await browser.newPage();
         await page.setContent(html);
         const pdfBuffer = await page.pdf({
